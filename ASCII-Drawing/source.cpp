@@ -68,6 +68,10 @@ do{
 		_optionsMainMenu = '0';
 	}
 
+	while (_optionsMainMenu == 'c') {
+		//TODO - Calculate power for R1 R2 & R3
+	}
+
 
 
 } while (_optionsMainMenu != 'd');
