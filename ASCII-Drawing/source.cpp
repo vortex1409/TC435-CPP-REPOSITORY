@@ -33,7 +33,8 @@ do{
 	cout << "B) Calculate Currents" << endl;
 	cout << "C) Calculate Power" << endl;
 	cout << "D) Exit Program" << endl;
-	cin >> "Option " >> _optionsMainMenu;
+	cout << "Option: ";
+	cin >> _optionsMainMenu;
 
 	if (_optionsMainMenu == 'a') {
 		cout << "Enter All Resistor Values in kOhms" << endl;
@@ -58,6 +59,7 @@ do{
 		cout << "VR1: " << vs * r1 / (rt / 1000);
 		cout << "V(BC)" << vs * (1 - r1 / (rt / 1000));
 
+		cout << endl;
 		system("pause");
 		_optionsMainMenu = '0';
 	}
