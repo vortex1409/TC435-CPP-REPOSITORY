@@ -57,7 +57,11 @@ do{
 		cout << "Total Resistance: " << rt / 1000 << "kOhms" << endl;
 		cout << "Total Current: " << it / 1000 << "mA" << endl;
 		cout << "VR1: " << vs * r1 / (rt / 1000);
+		cout << "V(AB): " << vs * r1 / (rt / 1000);
 		cout << "V(BC)" << vs * (1 - r1 / (rt / 1000));
+		cout << "Current(AB): " << it * 1000 << "mA" << endl;
+		cout << "Current(B): " << ((1 / (1 / r2 + 1 / r3)) * 1000) / rt;
+		cout << "Current(B): " << ((1 / (1 / r2 + 1 / r3))) * 1000;
 
 		cout << endl;
 		system("pause");
