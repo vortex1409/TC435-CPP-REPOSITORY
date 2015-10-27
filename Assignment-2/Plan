@@ -1,0 +1,14 @@
+Power = I * V
+
+PR1 = VR1 * IR1
+PR2 = VR2 * IR2
+PR3 = VR3 * IR3
+
+Predefined Variables or User Defined
+VS, R1, R2, R3
+
+Defined Variables
+
+PR1, PR2, PR3
+VR1, VR2, VR3
+IR1, IR2, IR3
