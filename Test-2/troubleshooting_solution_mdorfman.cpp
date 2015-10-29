@@ -12,48 +12,60 @@ int main() {
 	cout << "Give me a number for variable c: ";
 	cin >> c;
 
-	if (a == b && a!= c)
+	if (isdigit(a) && isdigit(b) && isdigit(c))
 	{
-		cout << a << " is equal to " << b << " but not equal to " << c << endl;
-		if (a > c)
+		if (a == b && a != c)
 		{
-			cout << a << " is greater than " << c << endl;
+			cout << a << " is equal to " << b << " but not equal to " << c << endl;
+			if (a > c)
+			{
+				cout << a << " is greater than " << c << endl;
+			}
+			else
+			{
+				cout << c << " is greater tha " << a << endl;
+			}
 		}
-		else
+		else if (b == c && b != c)
 		{
-			cout << c << " is greater tha " << a << endl;
+			cout << b << " is equal to " << c << " but not equal to " << a << endl;
+			if (b > c)
+			{
+				cout << b << " is greater than " << c << endl;
+			}
+			else
+			{
+				cout << c << " is greater than " << b << endl;
+			}
+		}
+		else if (a == b && c)
+		{
+			cout << a << "," << b << " and " << c << " are equal." << endl;
+		}
+		else if (a > b) {
+			if (a > c)
+				cout << a << " is greater than " << b << " and " << c << endl;
+			else
+				cout << a << " is greater than " << b << " but smaller than " << c << endl;
+		}
+		else if (b > c) {
+			if (b > a)
+				cout << b << " is greater than " << c << " and " << a << endl;
+			else
+				cout << b << " is greater than " << c << " but smaller than " << a << endl;
+		}
+		else if (c > a) {
+			if (c > b)
+				cout << c << " is greater than " << a << " and " << b << endl;
+			else
+				cout << c << " is greater than " << a << " but smaller than " << b << endl;
 		}
 	}
-	else if (b == c && b!= c)
+	else
 	{
-		cout << b << " is equal to " << c << " but not equal to " << a << endl;
-		if (b > c)
-		{
-			cout << b << " is greater than " << c << endl;
-		}
-		else
-		{
-			cout << c << " is greater than " << b << endl;
-		}
+		cout << "One of your values was not a number" << endl;
 	}
-	else if (a > b) {
-		if (a > c)
-			cout << a << " is greater than " << b << " and " << c << endl;
-		else
-			cout << a << " is greater than " << b << " but smaller than " << c << endl;
-	}
-	else if (b > c) {
-		if (b > a)
-			cout << b << " is greater than " << c << " and " << a << endl;
-		else
-			cout << b << " is greater than " << c << " but smaller than " << a << endl;
-	}
-	else if (c > a) {
-		if (c > b)
-			cout << c << " is greater than " << a << " and " << b << endl;
-		else
-			cout << c << " is greater than " << a << " but smaller than " << b << endl;
-	}
+	
 	// SPACER ---------------------------------------------------------
 	cout << endl;
 	cout << "________________________________________________" << endl;
