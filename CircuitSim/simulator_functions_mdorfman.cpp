@@ -2,17 +2,11 @@
 #include <cmath> // Added to remove 'ambiguous'
 using namespace std;
 
-double _PowerR1(double ir1, double vr1)
+double _Power(double I, double R)
 {
-	double fpr1;
-	fpr1 = ir1 + vr1;
-	return fpr1;
-}
-double _PowerR2(double ir2, double vr2)
-{
-	double fpr2;
-	fpr2 = ir2 + vr2;
-	return fpr2;
+	double P;
+	P = I * I * R;
+	return P;
 }
 
 int main() {
@@ -97,10 +91,10 @@ int main() {
 		A = VS;							  // Voltage at Point A
 		B = VR2;                          // Voltage at Point B
 		C = VR3;                          // Voltage at Point C
-		PR1 = IR1 * VR1;                  // Power at R1
-		PR2 = IR2 * VR2;                  // Power at R2
-		PR3 = IR3 * VR3;                  // Power at R3
-		PT = IT * VS;                     // Total Power
+		PR1 = IR1 * IR1 * VR1;            // Power at R1
+		PR2 = IR2 * IR2 * VR2;            // Power at R2
+		PR3 = IR3 * IR3 * VR3;            // Power at R3
+		PT = IT * IT * VS;                // Total Power
 		// --------- CIRCUIT MATH END----------------------
 
 		while (_optionsMainMenu == 'b') { // Displays VOLTAGES
@@ -140,11 +134,8 @@ int main() {
 		}
 		while (_optionsMainMenu == 'd') { // Displays POWER (Calculated Using Functions
 
-			_PR1 = _PowerR1(IR1, VR1);
+			_PR1 = _Power(IR1, VR1);
 			cout << "The result is " << _PR1;
-
-			_PR2 = _PowerR2(IR2, VR2);
-			cout << "The result is " << _PR2;
 
 			cout << endl;
 			system("pause");
@@ -159,9 +150,3 @@ int main() {
 	system("pause");
 	return 0;
 }
-
-
-//PR1 = IR1 * VR1;                  // Power at R1
-//PR2 = IR2 * VR2;                  // Power at R2
-//PR3 = IR3 * VR3;                  // Power at R3
-//PT = IT * VS;                     // Total Power
