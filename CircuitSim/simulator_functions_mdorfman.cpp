@@ -138,19 +138,19 @@ int main() {
 			system("pause");
 			_optionsMainMenu = '0';
 		}
-		while (_optionsMainMenu == 'e') { // Displays POWER (Calculated Using Functions
+		while (_optionsMainMenu == 'e') { // Displays POWER (Calculated Using a Function)
 
 			_PR1 = _Power(IR1, VR1);
 			cout << "PR1 = " << _PR1 << " mW" << endl;
 
 			_PR2 = _Power(IR2, VR2);
-			cout << "PR1 = " << _PR2 << " mW" << endl;
+			cout << "PR2 = " << _PR2 << " mW" << endl;
 
-			_PR3 = _Power(IR2, VR2);
-			cout << "PR1 = " << _PR3 << " mW" << endl;
+			_PR3 = _Power(IR3, VR3);
+			cout << "PR3 = " << _PR3 << " mW" << endl;
 
 			_PT = _Power(IT, VS);
-			cout << "PR1 = " << _PT << " mW" << endl;
+			cout << "PT = " << _PT << " mW" << endl;
 
 			cout << endl;
 			system("pause");
