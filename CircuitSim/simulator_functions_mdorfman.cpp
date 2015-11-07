@@ -1,16 +1,22 @@
 #include <iostream>
 #include <cmath> // Added to remove 'ambiguous'
+#include<iomanip> // Decimal precision
 using namespace std;
 
-double _Power(double I, double R)
+
+//--------- FUNCTIONS START -------------------
+double _Power(double I, double R) // Power Function
 {
 	double P;
 	P = I * I * R;
 	return P;
 }
+//--------- FUNCTIONS END --------------------
 
 int main() {
-	char _optionsMainMenu;
+	std::cout << std::fixed; // std Decimal Precision
+	std::cout << std::setprecision(2); // std Decimal Precision
+	char _optionsMainMenu; // Menu Charactar
 	int VS = 0; // Source Voltage
 	double A = 0; // Circuit Point A (Voltage)
 	double B = 0; // Circuit Point B (Voltage)
@@ -132,10 +138,19 @@ int main() {
 			system("pause");
 			_optionsMainMenu = '0';
 		}
-		while (_optionsMainMenu == 'd') { // Displays POWER (Calculated Using Functions
+		while (_optionsMainMenu == 'e') { // Displays POWER (Calculated Using Functions
 
 			_PR1 = _Power(IR1, VR1);
-			cout << "The result is " << _PR1;
+			cout << "PR1 = " << _PR1 << " mW" << endl;
+
+			_PR2 = _Power(IR2, VR2);
+			cout << "PR1 = " << _PR2 << " mW" << endl;
+
+			_PR3 = _Power(IR2, VR2);
+			cout << "PR1 = " << _PR3 << " mW" << endl;
+
+			_PT = _Power(IT, VS);
+			cout << "PR1 = " << _PT << " mW" << endl;
 
 			cout << endl;
 			system("pause");
