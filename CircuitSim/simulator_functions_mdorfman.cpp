@@ -2,6 +2,19 @@
 #include <cmath> // Added to remove 'ambiguous'
 using namespace std;
 
+double _PowerR1(double ir1, double vr1)
+{
+	double fpr1;
+	fpr1 = ir1 + vr1;
+	return fpr1;
+}
+double _PowerR2(double ir2, double vr2)
+{
+	double fpr2;
+	fpr2 = ir2 + vr2;
+	return fpr2;
+}
+
 int main() {
 	char _optionsMainMenu;
 	int VS = 0; // Source Voltage
@@ -23,6 +36,10 @@ int main() {
 	double PR2 = 0; // Power on R2
 	double PR3 = 0; // Power on R3
 	double PT = 0; // Total Power
+	double _PR1 = 0; // Power on R1 Using Functions
+	double _PR2 = 0; // Power on R1 Using Functions
+	double _PR3 = 0; // Power on R1 Using Functions
+	double _PT = 0; // Total Power Using Functions
 
 
 	do {
@@ -51,7 +68,7 @@ int main() {
 		cout << "C) Calculate Currents" << endl;
 		cout << "D) Calculate Power" << endl;
 		cout << "E) Calculate Power Using C++ Functions" << endl;
-		cout << "F) Exit Program"
+		cout << "F) Exit Program" << endl;
 		cout << "Option: ";
 		cin >> _optionsMainMenu;
 
@@ -123,7 +140,11 @@ int main() {
 		}
 		while (_optionsMainMenu == 'd') { // Displays POWER (Calculated Using Functions
 
-			//OUTPUT
+			_PR1 = _PowerR1(IR1, VR1);
+			cout << "The result is " << _PR1;
+
+			_PR2 = _PowerR2(IR2, VR2);
+			cout << "The result is " << _PR2;
 
 			cout << endl;
 			system("pause");
@@ -138,3 +159,9 @@ int main() {
 	system("pause");
 	return 0;
 }
+
+
+//PR1 = IR1 * VR1;                  // Power at R1
+//PR2 = IR2 * VR2;                  // Power at R2
+//PR3 = IR3 * VR3;                  // Power at R3
+//PT = IT * VS;                     // Total Power
