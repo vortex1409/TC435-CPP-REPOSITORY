@@ -11,6 +11,27 @@ double _Power(double I, double R) // Power Function
 	P = I * I * R;
 	return P;
 }
+
+double _Resistance(double V, double I) // Resistance Function
+{
+	double R;
+	R = V / I;
+	return R;
+}
+
+double _Voltage(double I, double R) // Voltage Function
+{
+	double V;
+	V = I * R;
+	return V;
+}
+
+double _Current(double V, double R) // Current Function
+{
+	double I;
+	I = V / R;
+	return I;
+}
 //--------- FUNCTIONS END --------------------
 
 int main() {
@@ -62,13 +83,20 @@ int main() {
 		cout << "R2: " << R2 << "kOhms" << endl;
 		cout << "R3: " << R3 << "kOhms" << endl;
 		cout << "________________________________________________" << endl;
+		cout << "=========== Normal Circuit Math ================" << endl;
+		cout << "________________________________________________" << endl;
 		cout << "Options" << endl;
 		cout << "A) Load Values" << endl;
 		cout << "B) Calculate Voltages" << endl;
 		cout << "C) Calculate Currents" << endl;
 		cout << "D) Calculate Power" << endl;
-		cout << "E) Calculate Power Using C++ Functions" << endl;
-		cout << "F) Exit Program" << endl;
+		cout << "________________________________________________" << endl;
+		cout << "======= Circuit Math Using C++ Functions =======" << endl;
+		cout << "________________________________________________" << endl;
+		cout << "E) Calculate Voltage Using C++ Functions" << endl;
+		cout << "F) Calculate Current Using C++ Functions" << endl;
+		cout << "G) Calculate Power Using C++ Functions" << endl;
+		cout << "H) Exit Program" << endl;
 		cout << "Option: ";
 		cin >> _optionsMainMenu;
 
@@ -92,9 +120,9 @@ int main() {
 		VR2 = VS - VR1;                   // Voltage on R2
 		VR3 = VR2;                        // Voltage on R3
 		IR1 = IT;                         // Current Through R1
-		IR2 = VR2 / R2;					  // Current Through R2
+		IR2 = VR2 / R2;			  // Current Through R2
 		IR3 = VR3 / R3;                   // Current Through R3
-		A = VS;							  // Voltage at Point A
+		A = VS;				  // Voltage at Point A
 		B = VR2;                          // Voltage at Point B
 		C = VR3;                          // Voltage at Point C
 		PR1 = IR1 * IR1 * VR1;            // Power at R1
@@ -138,7 +166,16 @@ int main() {
 			system("pause");
 			_optionsMainMenu = '0';
 		}
-		while (_optionsMainMenu == 'e') { // Displays POWER (Calculated Using a Function)
+
+		while (_optionsMainMenu == 'e') { // Displays VOLTAGE (Calculated Using a Function)
+			//TODO
+		}
+
+		while (_optionsMainMenu == 'f') { // Displays CURRENT (Calculated Using a Function)
+			//TODO
+		}
+
+		while (_optionsMainMenu == 'g') { // Displays POWER (Calculated Using a Function)
 
 			_PR1 = _Power(IR1, VR1);
 			cout << "PR1 = " << _PR1 << " mW" << endl;
@@ -157,7 +194,7 @@ int main() {
 			_optionsMainMenu = '0';
 		}
 
-	} while (_optionsMainMenu != 'f'); // Exits Program
+	} while (_optionsMainMenu != 'h'); // Exits Program
 
 
 	// SPACER ---------------------------------------------------------
