@@ -1,8 +1,12 @@
 // Michael Dorfman
-// If I run out of time I am so close to finishing this program it's amazing
-#include <iostream>
+// I have applied the concepts of C++ to this test but I may have made a few mistakes.
+// Most values have to be entered using kOhms
+// Capacitor Values MUST be entered in uF (MicroFarads)
+// Frequency MUST be entered using kHz (kiloHertz)
+
+#include <iostream> // Template
 #include <cmath> // Added to remove 'ambiguous'
-using namespace std;
+using namespace std; // Template
 
 // Global Variables
 double freq = 1;//kHz
@@ -38,6 +42,7 @@ double _ParallelResistance(double _R1, double _R2) // Parallel Resistance
 int main() {
 	char _optionsMainMenu; // Menu 1
 	int _optionsMainMenu2 = 0; // Menu 2
+	int _optionsMainMenu3 = 0; //Menu 3
 	double RIN = 0;// kOhms
 	double XIN = 0; //uF
 	double CapIN = 0; //uF
@@ -132,9 +137,9 @@ int main() {
 				cout << "2) Parallel" << endl;
 				cout << "3) Leave Menu" << endl;
 				cout << "Option: ";
-				cin >> _optionsMainMenu2;
+				cin >> _optionsMainMenu3;
 
-				while (_optionsMainMenu2 == 1){ // SERIES
+				while (_optionsMainMenu3 == 1){ // SERIES
 					cout << "Cap Value: ";
 					cin >> XIN;
 					CapTotal = CapTotal + XIN;
@@ -151,11 +156,11 @@ int main() {
 					}
 					else if (addr == 2)
 					{
-						_optionsMainMenu2 = 0;
+						_optionsMainMenu3 = 0;
 					}
 				}
 
-				while (_optionsMainMenu2 == 2){ // PARALLEL
+				while (_optionsMainMenu3 == 2){ // PARALLEL
 					cout << "Cap Value: ";
 					cin >> XIN;
 					CapTotal = _ParallelResistance(CapTotal, XIN);
@@ -172,11 +177,11 @@ int main() {
 					}
 					else if (addr == 2)
 					{
-						_optionsMainMenu2 = 0;
+						_optionsMainMenu3 = 0;
 					}
 				}
 
-			} while (_optionsMainMenu2 != 3);
+			} while (_optionsMainMenu3 != 3);
 			_optionsMainMenu = '0';
 		}
 
@@ -204,7 +209,7 @@ int main() {
 	} while (_optionsMainMenu != 'f'); // Exits Program
 
 	// SPACER ---------------------------------------------------------
-	cout << "________________________________________________" << endl;
-	system("pause");
-	return 0;
-}
+	cout << "________________________________________________" << endl; // Template
+	system("pause"); // Template
+	return 0; // Template
+} // END OF PROGRAM
