@@ -55,6 +55,7 @@ int main() {
 		cin >> toolmenu;
 	//------------------------------------------------------------------------------------MENU END
 
+		// CIRCUIT SIMULATOR SIMPLE
 		while (toolmenu == 'A') // Basic Circuit Simulator
 		{
 			char circuitmenu; // Menu Charactar
@@ -159,10 +160,10 @@ int main() {
 
 				while (circuitmenu == 'C') // Current
 				{
-					cout << "" << IR1 << "mA" << endl;
-					cout << "" << IR2 << "mA" << endl;
-					cout << "" << IR3 << "mA" << endl;
-					cout << "" << IT << "mA" << endl;
+					cout << "IR1 = " << IR1 << "mA" << endl;
+					cout << "IR2 = " << IR2 << "mA" << endl;
+					cout << "IR3 = " << IR3 << "mA" << endl;
+					cout << "IT = " << IT << "mA" << endl;
 					cout << endl;
 					system("pause");
 					circuitmenu = '0';
@@ -180,13 +181,16 @@ int main() {
 				}
 
 			} while (circuitmenu != 'E'); // Exits Program
+			toolmenu = '0';
 		}
 
+		// MAGIC SQUARE GENERATOR
 		while (toolmenu == 'B') // Magic Square Generator
 		{
 
 		}
 
+		// TRANSITOR BIAS CALCULATORS
 		while (toolmenu == 'C') // Transistor Bias Calculators
 		{
 
@@ -196,8 +200,11 @@ int main() {
 	} while (toolmenu != 'D'); // Exits Program
 
 	// SPACER ---------------------------------------------------------
-	cout << endl;
-	cout << "________________________________________________" << endl;
+	system("cls");
+	cout << "|==============================================|" << endl;
+	cout << "| The Toolbox Program has been Terminated      |" << endl;
+	cout << "| This program was created by Michael Dorfman  |" << endl;
+	cout << "|==============================================|" << endl;
 	system("pause");
 	return 0;
 }
