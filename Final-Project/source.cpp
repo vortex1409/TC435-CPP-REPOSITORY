@@ -56,7 +56,7 @@ int main() {
 	//------------------------------------------------------------------------------------MENU END
 
 		// CIRCUIT SIMULATOR SIMPLE
-		while (toolmenu == 'A') // Basic Circuit Simulator
+		while (toolmenu == 'A' || toolmenu == 'a') // Basic Circuit Simulator
 		{
 			char circuitmenu; // Menu Charactar
 			int VS = 0; // Source Voltage
@@ -185,13 +185,13 @@ int main() {
 		}
 
 		// MAGIC SQUARE GENERATOR
-		while (toolmenu == 'B') // Magic Square Generator
+		while (toolmenu == 'B' || toolmenu == 'b') // Magic Square Generator
 		{
 
 		}
 
 		// TRANSITOR BIAS CALCULATORS
-		while (toolmenu == 'C') // Transistor Bias Calculators
+		while (toolmenu == 'C' || toolmenu == 'c') // Transistor Bias Calculators
 		{
 
 		}
