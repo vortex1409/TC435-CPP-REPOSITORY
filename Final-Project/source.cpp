@@ -31,6 +31,22 @@ double _Current(double V, double R) // Current Function
 	I = V / R;
 	return I;
 }
+
+// --TRANSISTOR FUNCTIONS EMITTER FEEDBACK----
+double _fIE(double V, double R, double R2, double BETA)
+{
+	double IE, V, RB, BETA, RE;
+	IE = (V - 0.7) / ((R / BETA) + R2);
+	return IE;
+}
+
+double _fVCE(double V, double I, double R, double R2)
+{
+	double VCE;
+	VCE = V - I * (R + R2);
+	return VCE;
+}
+
 //--------- FUNCTIONS END --------------------
 
 int main() {
@@ -50,7 +66,9 @@ int main() {
 		cout << "| A) Basic Circuit Simulator                   |" << endl;
 		cout << "| B) Magic Square Generator                    |" << endl;
 		cout << "| C) Transistor Bias Calculators               |" << endl;
-		cout << "| D) Exit Toolbox                              |" << endl;
+		cout << "| D) Text Encryption                           |" << endl;
+		cout << "| E) Text to Hex                               |" << endl;
+		cout << "| F) Exit Toolbox (USE D FOR NOW)              |" << endl;
 		cout << "| Selection: ";
 		cin >> toolmenu;
 	//------------------------------------------------------------------------------------MENU END
@@ -184,20 +202,43 @@ int main() {
 			toolmenu = '0';
 		}
 
-		// MAGIC SQUARE GENERATOR
+		// MAGIC SQUARE GENERATOR 
 		while (toolmenu == 'B' || toolmenu == 'b') // Magic Square Generator
 		{
 
 		}
 
-		// TRANSITOR BIAS CALCULATORS
+		// TRANSITOR BIAS CALCULATORS (2 Bias Calculators)
 		while (toolmenu == 'C' || toolmenu == 'c') // Transistor Bias Calculators
+		{
+			char transitormenu;
+			do
+			{
+				cout << "|==============================================|" << endl;
+				cout << "|========| TRANSITOR BIAS CALCULATORS |========|" << endl;
+				cout << "|==============================================|" << endl;
+				cout << "|                 Programs                     |" << endl;
+				cout << "| A) Emitter Feedback Bias                     |" << endl;
+				cout << "| B) Voltage Divider Bias                      |" << endl;
+				cout << "| D) Exit Calculator                           |" << endl;
+				cout << "| Selection: ";
+				cin >> transistormenu;
+			}
+		}
+
+		// Text Encryption (Makes Text Unreadable by Humans (Security))
+		while (toolmenu == 'X' || toolmenu == 'x')
 		{
 
 		}
 
+		// Text to Hex Converter (Converts Text String to Hexadecimal)
+		while (toolmenu == 'X' || toolmenu == 'x')
+		{
 
-	} while (toolmenu != 'D'); // Exits Program
+		}
+
+	} while (toolmenu != 'D' || toolmenu != 'd'); // Exits Program
 
 	// SPACER ---------------------------------------------------------
 	system("cls");
