@@ -1,15 +1,16 @@
-#include <iostream>
+#include <iostream> // Core
 #include <cmath> // Added to remove 'ambiguous'
 #include<iomanip> // Decimal precision
-#include <string>
-#include <cctype>
-#include <cstdlib>
-#include <ctime>
-#include <cstring>
-using namespace std;
+#include <string> // Ignore
+#include <cctype> // Ignore
+#include <cstdlib> // Ignore
+#include <ctime> // Ignore
+#include <cstring> // Ignore
+using namespace std; // Core
 
 //=====|Encryption Functions Start|=====
 void Encrypt(string&);
+
 string Decrypt(string strTarget);
 
 void Encrypt(string &strTarget)
@@ -50,6 +51,7 @@ string Decrypt(string strTarget)
 	return strDecrypted;
 }
 //=====|Encryption Functions End|======
+
 
 
 //--------- FUNCTIONS START -------------------
@@ -113,7 +115,7 @@ int main() {
 		cout << "|==============================================|" << endl;
 		cout << "|                 Programs                     |" << endl;
 		cout << "| A) Basic Circuit Simulator (Core)            |" << endl;
-		cout << "| B) Magic Square Generator (Core)             |" << endl;
+		cout << "| B) Shift Register (Core)                     |" << endl;
 		cout << "| C) Transistor Bias Calculators (Optional)    |" << endl;
 		cout << "| D) Text Encryption (Extra)                   |" << endl;
 		cout << "| E) Text to Hex (Extra)                       |" << endl;
@@ -254,6 +256,40 @@ int main() {
 		// SHIFT REGISTER
 		while (toolmenu == 'B' || toolmenu == 'b') // SHIFT REGISTER
 		{
+			char shiftmenu;
+			int D0 = 0;
+			int D1 = 0;
+			int D2 = 0;
+			int D3 = 0;
+			int _input = 0;
+			int _output = 0;
+
+			do
+			{
+				cout << "|==============================================|" << endl;
+				cout << "|================| SHIFTER |===================|" << endl;
+				cout << "|==============================================|" << endl;
+				cout << "|=======|" << "D0" << "|===|" << "D0" << "|===|" << "D0" << "|===|" << "D0" << "|==========|" << endl;
+				cout << "|===========|" << D0 << "|===|" << D1 << "|===|" << D2 << "|===|" << D3 << "|==============|" << endl;
+				cout << "|==============================================|" << endl;
+				cout << "| A) SHIFT RIGHT                               |" << endl;
+				cout << "| B) SHIFT LEFT                                |" << endl;
+				cout << "| C) EXIT                                      |" << endl;
+				cout << "| Selection: ";
+				cin >> shiftmenu;
+
+				while (shiftmenu == 'A' || shiftmenu == 'a') // SHIFT RIGHT
+				{
+
+				}
+
+				while (shiftmenu == 'B' || shiftmenu == 'b') // SHIFT LEFT
+				{
+
+				}
+
+			} while (!(shiftmenu == 'C' || shiftmenu == 'c')); // EXIT
+			toolmenu = '0';
 
 		}
 
@@ -340,7 +376,7 @@ int main() {
 						_ICSAT = VCC / (RC + RE);
 						// --------- CIRCUIT MATH END----------------------
 
-						while (emittermenu == 'B' || emittermenu == 'c')
+						while (emittermenu == 'B' || emittermenu == 'b')
 						{
 							cout << "VCC = " << VCC << " V" << endl;
 							cout << "RB = " << RB << " kOhms" << endl;
@@ -412,8 +448,8 @@ int main() {
 		}
 
 	} while (!(toolmenu == 'F' || toolmenu == 'f')); // Exits Program
-	
-	// SPACER ---------------------------------------------------------
+
+													 // SPACER ---------------------------------------------------------
 	system("cls");
 	cout << "|===============================================|" << endl;
 	cout << "|    The Toolbox Program has been Terminated    |" << endl;
