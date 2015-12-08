@@ -8,6 +8,8 @@
 #include <cstring> // Ignore
 using namespace std; // Core
 
+//MTQwOQ==
+
 //=====|Encryption Functions Start|=====
 void Encrypt(string&);
 
@@ -52,8 +54,6 @@ string Decrypt(string strTarget)
 }
 //=====|Encryption Functions End|======
 
-
-
 //--------- FUNCTIONS START -------------------
 double _Power(double I, double R) // Power Function
 {
@@ -83,7 +83,6 @@ double _Current(double V, double R) // Current Function
 	return I;
 }
 
-// --TRANSISTOR FUNCTIONS EMITTER FEEDBACK----
 double _fIE(double V, double R, double R2, double BETA)
 {
 	double IE;
@@ -98,10 +97,24 @@ double _fVCE(double V, double I, double R, double R2)
 	return VCE;
 }
 
+void clear()
+{
+	system("pause");
+}
+
+void pause()
+{
+	// system("pause");
+	cin.ignore();
+	cin.clear();
+	cout << "Press any key to continue...";
+	cin.get();
+}
+
 //--------- FUNCTIONS END --------------------
 
 int main() {
-	system("COLOR 02");
+	system("COLOR 70"); // Stylish Change :D
 	std::cout << std::fixed; // std Decimal Precision
 	std::cout << std::setprecision(2); // std Decimal Precision
 	char toolmenu; // Menu Charactar
@@ -119,7 +132,8 @@ int main() {
 		cout << "| C) Transistor Bias Calculators (Optional)    |" << endl;
 		cout << "| D) Text Encryption (Extra)                   |" << endl;
 		cout << "| E) Text to Hex (Extra)                       |" << endl;
-		cout << "| F) Exit Toolbox                              |" << endl;
+		cout << "| F) Credits                                   |" << endl;
+		cout << "| G) Exit Toolbox                              |" << endl;
 		cout << "| Selection: ";
 		cin >> toolmenu;
 		//------------------------------------------------------------------------------------MENU END
@@ -257,40 +271,79 @@ int main() {
 		while (toolmenu == 'B' || toolmenu == 'b') // SHIFT REGISTER
 		{
 			char shiftmenu;
-			int D0 = 0;
-			int D1 = 0;
-			int D2 = 0;
-			int D3 = 0;
+
+			int D0, D1, D2, D3;
+			D0 = D1 = D2 = D3 = 0;
+
 			int _input = 0;
 			int _output = 0;
 
 			do
 			{
+				system("cls");
 				cout << "|==============================================|" << endl;
 				cout << "|================| SHIFTER |===================|" << endl;
 				cout << "|==============================================|" << endl;
-				cout << "|=======|" << "D0" << "|===|" << "D0" << "|===|" << "D0" << "|===|" << "D0" << "|==========|" << endl;
-				cout << "|===========|" << D0 << "|===|" << D1 << "|===|" << D2 << "|===|" << D3 << "|==============|" << endl;
+				cout << "|=======|" << "D3" << "|===|" << "D2" << "|===|" << "D1" << "|===|" << "D0" << "|==========|" << endl;
+				cout << "|===========|" << D3 << "|===|" << D2 << "|===|" << D1 << "|===|" << D0 << "|==============|" << endl;
 				cout << "|==============================================|" << endl;
-				cout << "| A) SHIFT RIGHT                               |" << endl;
-				cout << "| B) SHIFT LEFT                                |" << endl;
-				cout << "| C) EXIT                                      |" << endl;
+				cout << "| A) SHIFT ONE RIGHT                           |" << endl;
+				cout << "| B) SHIFT ONE LEFT                            |" << endl;
+				cout << "| C) SHIFT ZERO RIGHT                          |" << endl;
+				cout << "| D) SHIFT ZERO LEFT                           |" << endl;
+				cout << "| E) EXIT                                      |" << endl;
 				cout << "| Selection: ";
 				cin >> shiftmenu;
 
-				while (shiftmenu == 'A' || shiftmenu == 'a') // SHIFT RIGHT
+				switch (shiftmenu)
 				{
+				case 'A':
+				case 'a':
+					clear();
+					// Shift 1 right
+					D0 = D1;
+					D1 = D2;
+					D2 = D3;
+					D3 = 1;
+					break;
 
+				case 'B':
+				case 'b':
+					clear();
+					// Shift 1 left
+					D3 = D2;
+					D2 = D1;
+					D1 = D0;
+					D0 = 1;
+					break;
+
+				case 'C':
+				case 'c':
+					clear();
+					// Shift 0 right
+					D0 = D1;
+					D1 = D2;
+					D2 = D3;
+					D3 = 0;
+					break;
+
+
+				case 'D':
+				case 'd':
+					clear();
+					// Shift 0 left
+					D3 = D2;
+					D2 = D1;
+					D1 = D0;
+					D0 = 0;
+					break;
+
+				default:
+					clear();
+					break;
 				}
-
-				while (shiftmenu == 'B' || shiftmenu == 'b') // SHIFT LEFT
-				{
-
-				}
-
-			} while (!(shiftmenu == 'C' || shiftmenu == 'c')); // EXIT
+			} while (!(shiftmenu == 'E' || shiftmenu == 'e')); // EXIT
 			toolmenu = '0';
-
 		}
 
 		// TRANSITOR BIAS CALCULATORS (2 Bias Calculators)
@@ -394,6 +447,7 @@ int main() {
 							cout << "BETA = " << _BETA << "hfe" << endl;
 							cout << "IC(SAT) = " << _ICSAT << " mA" << endl;
 							cout << "VCE(CUT)" << VCC << " V" << endl;
+							system("pause");
 						}
 
 					} while (emittermenu != 'C' || emittermenu != 'c');
@@ -403,7 +457,102 @@ int main() {
 				// VOLTAGE DIVIDER BIAS
 				while (transistormenu == 'B' || transistormenu == 'b')
 				{
+					char voltagemenu;
+					double VCC = 0;
+					double VR2 = 0;
+					double RB = 0;
+					double RC = 0;
+					double RE = 0;
+					double R1 = 0;
+					double R2 = 0;
+					double VBE = 0.7;
+					double IE = 0;
+					double IB = 0;
+					double IC = 0;
+					double VB = 0;
+					double VC = 0;
+					double VE = 0;
+					double VRB = 0;
+					double VRC = 0;
+					double VRE = 0;
+					double _ICSAT = 0;
+					double _VCECUT = VCC;
+					double _VCE = 0;
+					double _BETA = 0;
 
+					do
+					{
+						system("cls");
+						cout << "|==============================================|" << endl;
+						cout << "|========| TRANSITOR BIAS CALCULATORS |========|" << endl;
+						cout << "|==============================================|" << endl;
+						cout << "|                 Programs                     |" << endl;
+						cout << "| A) Load Values                               |" << endl;
+						cout << "| B) View Results                              |" << endl;
+						cout << "| C) Exit                                      |" << endl;
+						cout << "| Selection: ";
+						cin >> voltagemenu;
+
+						if (voltagemenu == 'A' || voltagemenu == 'a')
+						{
+							cout << "Load Values" << endl;
+							cout << "=====================" << endl;
+							cout << "VCC: ";
+							cin >> VCC;
+							cout << "R1: ";
+							cin >> R1;
+							cout << "R2: ";
+							cin >> R2;
+							cout << "RC: ";
+							cin >> RC;
+							cout << "RE: ";
+							cin >> RE;
+							cout << "BETA: ";
+							cin >> _BETA;
+						}
+
+						//_fVCE(double V, double I, double R, double R2)    _PT = _Power(IT, VS);
+						// ----------- CIRCUIT MATH -----------------------
+						VR2 = (VCC * VR2) / (R1 + R2);
+						IE = (VR2 - VBE) / RE;
+						IC = IE;
+						IB = IC / _BETA;
+						_VCE = VCC - IE * (RC + RE);
+						VB = VR2;
+						VE = _Voltage(IE, RE);
+						VC = VCC - _Voltage(IC, RC);
+						VRC = _Voltage(IC, RC);
+						VRE = _Voltage(IE, RE);
+						_ICSAT = VCC / (RC + RE);
+						_VCECUT = VCC;
+						// --------- CIRCUIT MATH END----------------------
+
+						while (voltagemenu == 'B' || voltagemenu == 'b')
+						{
+							system("cls");
+							cout << "VCC = " << VCC << " V" << endl;
+							cout << "R1 = " << R1 << " kOhms" << endl;
+							cout << "R2 = " << R1 << " kOhms" << endl;
+							cout << "RC = " << RC << " kOhms" << endl;
+							cout << "RE = " << RE << " kOhms" << endl;
+							cout << "IE = " << IE << " mA" << endl;
+							cout << "IC = " << IC << " mA" << endl;
+							cout << "IB = " << IB << " uA" << endl;
+							cout << "VB = " << VB << " V" << endl;
+							cout << "VC = " << VC << " V" << endl;
+							cout << "VE = " << VE << " V" << endl;
+							cout << "VR2 = " << VR2 << " V" << endl;
+							cout << "VRC = " << VRC << " V" << endl;
+							cout << "VRE = " << VRE << " V" << endl;
+							cout << "BETA = " << _BETA << "hfe" << endl;
+							cout << "IC(SAT) = " << _ICSAT << " mA" << endl;
+							cout << "VCE(CUT)" << VCC << " V" << endl;
+							system("pause");
+							voltagemenu = '0';
+						}
+
+					} while (!(voltagemenu == 'C' || voltagemenu == 'c'));
+					transistormenu = '0';
 				}
 
 				// EXIT
@@ -447,9 +596,23 @@ int main() {
 
 		}
 
-	} while (!(toolmenu == 'F' || toolmenu == 'f')); // Exits Program
+		while (toolmenu == 'F' || toolmenu == 'f')
+		{
+			system("cls");
+			cout << "|===============================================|" << endl;
+			cout << "|    The Toolbox Program has been Terminated    |" << endl;
+			cout << "|  This program was created by Michael Dorfman  |" << endl;
+			cout << "|                Compiled Using                 |" << endl;
+			cout << "|     Visual Studio 2015 Enterprise 64 Bit      |" << endl;
+			cout << "|        Cloud9 IDE (Online Workspace)          |" << endl;
+			cout << "|        Thanks For the Great Semester          |" << endl;
+			cout << "|===============================================|" << endl;
+			system("pause");
+		}
 
-													 // SPACER ---------------------------------------------------------
+	} while (!(toolmenu == 'G' || toolmenu == 'g')); // Exits Program
+
+	// SPACER ---------------------------------------------------------
 	system("cls");
 	cout << "|===============================================|" << endl;
 	cout << "|    The Toolbox Program has been Terminated    |" << endl;
@@ -458,3 +621,5 @@ int main() {
 	system("pause");
 	return 0;
 }
+// 2015 (C) MICHAEL DORFMAN | VORTEX1409 | base64(TUlDSEFFTCBET1JGTUFOIHwgVk9SVEVYMTQwOQ==)
+//MTQwOQ==
