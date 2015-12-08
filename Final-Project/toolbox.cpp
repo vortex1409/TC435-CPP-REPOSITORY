@@ -8,9 +8,9 @@
 #include <cstring> // Ignore
 using namespace std; // Core
 
-//MTQwOQ==
+					 //MTQwOQ==
 
-//=====|Encryption Functions Start|=====
+					 //=====|Encryption Functions Start|=====
 void Encrypt(string&);
 
 string Decrypt(string strTarget);
@@ -197,7 +197,7 @@ int main() {
 				cout << "Option: ";
 				cin >> circuitmenu;
 
-				if (circuitmenu == 'A')
+				if (circuitmenu == 'A' || circuitmenu == 'a')
 				{
 					cout << "Enter All Resistor Values in kOhms" << endl;
 					cout << "Enter Vs: ";
@@ -600,7 +600,7 @@ int main() {
 		{
 			system("cls");
 			cout << "|===============================================|" << endl;
-			cout << "|    The Toolbox Program has been Terminated    |" << endl;
+			cout << "|                   Credits                     |" << endl;
 			cout << "|  This program was created by Michael Dorfman  |" << endl;
 			cout << "|                Compiled Using                 |" << endl;
 			cout << "|     Visual Studio 2015 Enterprise 64 Bit      |" << endl;
@@ -608,11 +608,12 @@ int main() {
 			cout << "|        Thanks For the Great Semester          |" << endl;
 			cout << "|===============================================|" << endl;
 			system("pause");
+			toolmenu = '0'
 		}
 
 	} while (!(toolmenu == 'G' || toolmenu == 'g')); // Exits Program
 
-	// SPACER ---------------------------------------------------------
+													 // SPACER ---------------------------------------------------------
 	system("cls");
 	cout << "|===============================================|" << endl;
 	cout << "|    The Toolbox Program has been Terminated    |" << endl;
