@@ -8,10 +8,6 @@ using namespace std;
 // XOR FUNCTION
 int _xor(int A, int B)
 {
-	// 00 = 0
-	// 01 = 1
-	// 10 = 1
-	// 11 = 0
 	int X = 0;
 	if (A == 0 && B == 0)
 	{
