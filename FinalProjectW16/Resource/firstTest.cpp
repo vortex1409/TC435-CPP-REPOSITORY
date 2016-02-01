@@ -8,3 +8,8 @@ void firstTest(int input)
 {
   cout << "Test #: " << input << endl;
 }
+
+void quizOne(double input)
+{
+  output = input + 2 * input * input;
+}
