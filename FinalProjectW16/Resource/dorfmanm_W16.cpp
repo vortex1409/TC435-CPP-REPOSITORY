@@ -1,9 +1,7 @@
-//Put this file in Resource Files
 #include <iostream>
 #include "dorfmanm_w16.h"
 using namespace std;
 
-//Define Functions
 void firstTest(int input)
 {
 	cout << "Test #: " << input << endl;
@@ -66,4 +64,18 @@ void quiz_2(int input_1, char input_2) // DGG - Solution
 	else {
 		cout << "I can't do that, John" << endl;
 	}
+}
+
+int AmodB(int A, int B)
+{
+	int output;
+	output = A%B; 
+	return output;
+}
+
+double customEquation_1(double A, double B, double C)
+{
+	double output;
+	output = ((C * C)*sqrt(A + B)) + (C/(B+A)/C);
+	return output;
 }
