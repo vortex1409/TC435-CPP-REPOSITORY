@@ -9,22 +9,10 @@ void firstTest(int input)
 	cout << "Test #: " << input << endl;
 }
 
-void quiz_1(double input) //This is the code I have from quiz 1, as i dont have a complete solution.
+void quiz_1(double input)
 {
 	double output;
-	double additive;
-	double addout;
-	double subtract;
-
-	if (input == 0)
-	{
-		output = -1;
-	}
-	else
-	{
-		additive = input * 2;
-		addout = additive * input;
-	}
+	output = input + (input * (2 * input));
 }
 
 void quiz_2(int input_1, char input_2) // DGG - Solution
