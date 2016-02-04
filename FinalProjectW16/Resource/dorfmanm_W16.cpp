@@ -12,7 +12,15 @@ void firstTest(int input)
 void quiz_1(double input)
 {
 	double output;
-	output = input + (input * (2 * input));
+
+	if (input == 0)
+	{
+		output = -1;
+	}
+	else
+	{
+		output = input + (input * (2 * input));
+	}
 }
 
 void quiz_2(int input_1, char input_2) // DGG - Solution
