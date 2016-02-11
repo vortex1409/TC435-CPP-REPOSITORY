@@ -69,13 +69,67 @@ void quiz_2(int input_1, char input_2) // DGG - Solution
 int AmodB(int A, int B)
 {
 	int output;
-	output = A%B; 
+	output = A%B;
 	return output;
 }
 
 double customEquation_1(double A, double B, double C)
 {
 	double output;
-	output = ((C * C)*sqrt(A + B)) + (C/(B+A)/C);
+	output = ((C * C)*sqrt(A + B)) + (C / (B + A) / C);
 	return output;
 }
+
+void customEquation_2(int inputArray[], int sizeOfArray)
+{
+	int working_r = 0;
+
+	// Part A
+	for (int i = 0; i < sizeOfArray; i++)
+	{
+		working_r += inputArray[i];
+
+	}
+
+	cout << "Total: " << working_r << endl;
+
+	working_r = inputArray[0];
+
+	// Park B bubble sorting
+	for (int i = 0; i < sizeOfArray; i++)
+	{
+		if (inputArray[i] < working_r)
+		{
+			working_r = inputArray[i];
+		}
+		
+	}
+	cout << "Smallest Val: " << working_r << endl;
+}
+
+void intToHex(int, int inputNumber)
+{
+	if (inputNumber > 255)
+	{
+		cout << endl << "err" << endl;
+	}
+	else
+	{
+		char output_bit1, output_bit0;
+		if()
+	}
+}
+
+
+void firstClass::firstfunction()
+{
+	cout << "hello" << endl;
+	firstClass working_r;
+	cout << working_r.num1 << endl;
+}
+
+int firstClass::addTwo(int a, int b)
+{
+	return a + b;
+}
+
