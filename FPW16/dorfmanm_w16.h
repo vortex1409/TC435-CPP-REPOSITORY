@@ -2,11 +2,14 @@
 #ifndef DORFMAN_W16_H
 #define DORFMAN_W16_H
 #include <iostream>
-//Name : Michael Dorfman
-// COurce: TC435
-// Project: Custom Header
-// Header for keeping functions and other code together to be used
-//in any program
+/*
+Name: Michael Dorfman
+Course: TC435
+Project: dorfmanm_w16.h
+
+Header file is used to keep functions and other code together, to be used in any program
+*/
+
 //--------------- DECLARING FUNCTIONS ----------------------
 
 void firstTest(int);
@@ -19,9 +22,15 @@ int AmodB(int, int);
 
 double customEquation_1(double, double, double);
 
+void identityMatrix(int);
+
+void determinantOfMatrix(int[][3], int);
+
 void customEquation_2(int [], int);
 
 void intToHex(int);
+
+void intToBin(int);
 
 //------------- DECLARING STRUCTURES --------------------------
 
@@ -34,7 +43,9 @@ struct transistor
 
 struct PLC
 {
-	double SP, PV, ProportionalG, DifferentialG, IntegralG, Alarm_1, Alarm_2, Output;
+	double SP, PV;
+	double ProportionalG, DifferentialG, IntegralG;
+	double Alarm_1, Alarm_2;
 };
 
 // ------------- DECLARING CLASSES-----------------------
