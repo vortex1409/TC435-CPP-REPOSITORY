@@ -2,6 +2,16 @@
 #include "dorfmanm_w16.h"
 using namespace std;
 
+/*
+Name: Michael Dorfman
+Course: TC435
+Project: dorfmanm_w16.h
+
+Library/Archive file that contains all functions, structures and classes.
+*/
+
+//--------------- DECLARING FUNCTIONS ----------------------
+
 void firstTest(int input)
 {
 	cout << "Test #: " << input << endl;
@@ -107,19 +117,86 @@ void customEquation_2(int inputArray[], int sizeOfArray)
 	cout << "Smallest Val: " << working_r << endl;
 }
 
-void intToHex(int, int inputNumber)
-{
-	if (inputNumber > 255)
+void identityMatrix(int sizeOfMatrix) {
+
+	int eye[1] = { 1 };
+	int eye2x2[2][2] = { { 1, 0 },{ 0, 1 } };
+	int eye3x3[3][3] = { { 1, 0, 0 },{ 0, 1, 0 },{ 0, 0, 1 } };
+
+	//limit identity to size 2 or 3
+	if (sizeOfMatrix == 2) 
 	{
-		cout << endl << "err" << endl;
+		for (int x = 0; x < 2; x++) 
+		{
+			for (int y = 0; y < 2; y++) 
+			{
+				cout << eye2x2[x][y] << " ";
+			}
+			cout << endl;
+		}
+	}
+	else if (sizeOfMatrix == 3) 
+	{
+		for (int x = 0; x < 3; x++) 
+		{
+			for (int y = 0; y < 3; y++) 
+			{
+				cout << eye3x3[x][y] << " ";
+			}
+			cout << endl;
+		}
 	}
 	else
 	{
-		char output_bit1, output_bit0;
-		if()
+		cout << eye[0];
 	}
 }
 
+void determinantOfMatrix(int[][3], int) 
+{
+
+}
+
+//void intToHex(int inputNumber) 
+//{
+//	if (inputNumber > 255) 
+//	{
+//		cout << endl << "error" << endl;
+//	}
+//	else 
+//	{
+//		char output_bit_1, output_bit_0;
+//		if (inputNumber >= 240)
+//			cout << endl;
+//	}
+//}
+
+void intToHex(int input)
+{
+	cout << "Hex: " << hex << input << "h" << endl;
+}
+
+void intToBin(int input)
+{
+	int binary_array[100], i = 0, j;
+
+	while (input > 0)
+	{
+		binary_array[i] = input % 2;
+		i++;
+		input = input / 2;
+	}
+	
+	cout << "Binary: ";
+
+	for (j = i - 1; j >= 0; j--)
+	{
+		cout << binary_array[j];
+	}
+
+	cout << "b";
+}
+// ------------- DECLARING CLASSES-----------------------
 
 void firstClass::firstfunction()
 {
