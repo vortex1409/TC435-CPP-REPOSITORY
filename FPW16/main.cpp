@@ -36,7 +36,15 @@ int main() {
 
 	cout << testClass.misc << endl;
 
+	//--------Assignment 3--------------------
 
+	cout << "------ Assignment 3 -------" << endl;
+
+	intToHex(127);
+
+	cout << endl;
+
+	intToBin(127);
 
 	//--------- MAIN END --------------------
 	cout << endl;
