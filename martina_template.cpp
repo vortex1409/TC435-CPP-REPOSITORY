@@ -1,12 +1,15 @@
 #include <iostream> // Core
 #include <cmath> // Added to remove 'ambiguous'
+#include <bellevillem_w16.h> // My Header
+
 using namespace std;
 
-int main() {
+int main() 
+{
 
 
-	//------ END ----
-	cout << endl;
+
+
 	system("pause");
 	return 0;
 }
