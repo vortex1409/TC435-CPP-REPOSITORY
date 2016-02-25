@@ -10,42 +10,19 @@ using namespace std;
 //--------- FUNCTIONS END --------------------
 
 int main() {
+	//--------- MAIN START ------------------
+	/*while (true) {
+		timer0 overflow;
 
-	firstTest(1);
+		overflow = timer0overflow();
+		timer0config(overflow.intHex);
+	}*/
 
-	cout << "AmoD Function" << endl;
-	cout << AmodB(3, 2) << endl;
+	double degrees = 360;
 
-	cout << "Custom Equation 1" << endl;
-	cout << customEquation_1(1, 1, 1) << endl;
-
-	int miscArray[] = { 1,2,3,4,5,-1,-3 };
-
-	PLC controller_1;
-	controller_1.PV = 30;
-
-	customEquation_2(miscArray, 4);
-
-	//------CLASSES START--------------
-
-	firstClass testClass;
-	testClass.firstfunction();
-
-	cout << endl;
-	cout << testClass.addTwo(3, 4) << endl;
-
-	cout << testClass.misc << endl;
-
-	//--------Assignment 3--------------------
-
-	cout << "------ Assignment 3 -------" << endl;
-
-	intToHex(127);
-
-	cout << endl;
-
-	intToBin(127);
-
+	cout << degrees << endl;
+	radtodeg(degrees);
+	cout << degrees << endl;
 	//--------- MAIN END --------------------
 	cout << endl;
 	system("pause");
