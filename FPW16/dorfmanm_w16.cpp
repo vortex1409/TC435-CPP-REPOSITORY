@@ -1,4 +1,5 @@
 #include <iostream>
+#include <cmath> // Added to remove 'ambiguous'
 #include "dorfmanm_w16.h"
 using namespace std;
 
@@ -112,7 +113,7 @@ void customEquation_2(int inputArray[], int sizeOfArray)
 		{
 			working_r = inputArray[i];
 		}
-		
+
 	}
 	cout << "Smallest Val: " << working_r << endl;
 }
@@ -124,22 +125,22 @@ void identityMatrix(int sizeOfMatrix) {
 	int eye3x3[3][3] = { { 1, 0, 0 },{ 0, 1, 0 },{ 0, 0, 1 } };
 
 	//limit identity to size 2 or 3
-	if (sizeOfMatrix == 2) 
+	if (sizeOfMatrix == 2)
 	{
-		for (int x = 0; x < 2; x++) 
+		for (int x = 0; x < 2; x++)
 		{
-			for (int y = 0; y < 2; y++) 
+			for (int y = 0; y < 2; y++)
 			{
 				cout << eye2x2[x][y] << " ";
 			}
 			cout << endl;
 		}
 	}
-	else if (sizeOfMatrix == 3) 
+	else if (sizeOfMatrix == 3)
 	{
-		for (int x = 0; x < 3; x++) 
+		for (int x = 0; x < 3; x++)
 		{
-			for (int y = 0; y < 3; y++) 
+			for (int y = 0; y < 3; y++)
 			{
 				cout << eye3x3[x][y] << " ";
 			}
@@ -152,7 +153,7 @@ void identityMatrix(int sizeOfMatrix) {
 	}
 }
 
-void determinantOfMatrix(int[][3], int) 
+void determinantOfMatrix(int[][3], int)
 {
 
 }
@@ -186,7 +187,7 @@ void intToBin(int input)
 		i++;
 		input = input / 2;
 	}
-	
+
 	cout << "Binary: ";
 
 	for (j = i - 1; j >= 0; j--)
@@ -196,6 +197,217 @@ void intToBin(int input)
 
 	cout << "b";
 }
+
+timer0 timer0overflow()
+{
+	/*
+	C = Iinterval Timer Size
+	Fosc = Internal Frequency Clock Hz
+	Prescaler = ratio to add additional variabiity
+	*/
+	
+	timer0 overflow;
+
+	overflow.TMR0ON = 1;
+	overflow.T08BIT = 1;
+	overflow.T0SC = 1;
+	overflow.T0SE = 1;
+	overflow.PSA = 1;
+	overflow.T0PS[0] = 1;
+	overflow.T0PS[1] = 1;
+	overflow.T0PS[2] = 1;
+	overflow.T_Period = 0;
+	overflow.DecVal = 0;
+
+	//for (int x; x < 3; x++)
+	//{
+	//	overflow.T0PS[x] = 1;
+	//}
+
+	double T = 0;
+	double C = 0;
+	double Fosc = 0;
+	double prescaler = 0;
+	int bitmenu = 0;
+	int freqmenu = 0;
+	int scalemenu = 0;
+
+	cout << "Select Bits (1) 8 | (2) 16" << endl;
+	cin >> bitmenu;
+
+	if (bitmenu == 1)
+	{
+		C = 8;
+		overflow.T08BIT = 1;
+
+	}
+	else if (bitmenu == 2)
+	{
+		C = 16;
+		overflow.T08BIT = 0;
+	}
+
+	cout << "Select Frequency (1) 31 KHz | (2) 250 kHz" << endl;
+	cout << "Select Frequency (3) 500 kHz | (4) 1 MHz" << endl;
+	cout << "Select Frequency (5) 2 MHz | (6) 4 MHz" << endl;
+	cout << "Select Frequency (7) 8 MHz | (8) 16 MHz" << endl;
+	cin >> freqmenu;
+
+	if (freqmenu == 1)
+	{
+		Fosc = 31000;
+	}
+	else if (freqmenu == 2)
+	{
+		Fosc = 250000;
+	}
+	else if (freqmenu == 3)
+	{
+		Fosc = 500000;
+	}
+	else if (freqmenu == 4)
+	{
+		Fosc = 1000000;
+	}
+	else if (freqmenu == 5)
+	{
+		Fosc = 2000000;
+	}
+	else if (freqmenu == 6)
+	{
+		Fosc = 4000000;
+	}
+	else if (freqmenu == 7)
+	{
+		Fosc = 8000000;
+	}
+	else if (freqmenu == 8)
+	{
+		Fosc = 16000000;
+	}
+
+	cout << "Select Prescaler (1) 1 | (2) 2" << endl;
+	cout << "Select Prescaler (3) 4 | (4) 8" << endl;
+	cout << "Select Prescaler (5) 16 | (6) 32" << endl;
+	cout << "Select Prescaler (7) 64 | (8) 128" << endl;
+	cout << "Select Prescaler (9) 256 |" << endl;
+	cin >> scalemenu;
+
+	if (scalemenu == 1)
+	{
+		prescaler = 1;
+		overflow.PSA = 1;
+		overflow.T0PS[0] = 0;
+		overflow.T0PS[1] = 0;
+		overflow.T0PS[2] = 0;
+
+	}
+	else if (scalemenu == 2)
+	{
+		prescaler = 2;
+		overflow.PSA = 0;
+		overflow.T0PS[0] = 0;
+		overflow.T0PS[1] = 0;
+		overflow.T0PS[2] = 0;
+	}
+	else if (scalemenu == 3)
+	{
+		prescaler = 4;
+		overflow.PSA = 0;
+		overflow.T0PS[0] = 1;
+		overflow.T0PS[1] = 0;
+		overflow.T0PS[2] = 0;
+	}
+	else if (scalemenu == 4)
+	{
+		prescaler = 8;
+		overflow.PSA = 0;
+		overflow.T0PS[0] = 0;
+		overflow.T0PS[1] = 1;
+		overflow.T0PS[2] = 0;
+	}
+	else if (scalemenu == 5)
+	{
+		prescaler = 16;
+		overflow.PSA = 0;
+		overflow.T0PS[0] = 1;
+		overflow.T0PS[1] = 1;
+		overflow.T0PS[2] = 0;
+	}
+	else if (scalemenu == 6)
+	{
+		prescaler = 32;
+		overflow.PSA = 0;
+		overflow.T0PS[0] = 0;
+		overflow.T0PS[1] = 0;
+		overflow.T0PS[2] = 1;
+	}
+	else if (scalemenu == 7)
+	{
+		prescaler = 64;
+		overflow.PSA = 0;
+		overflow.T0PS[0] = 1;
+		overflow.T0PS[1] = 0;
+		overflow.T0PS[2] = 1;
+	}
+	else if (scalemenu == 8)
+	{
+		prescaler = 128;
+		overflow.PSA = 0;
+		overflow.T0PS[0] = 0;
+		overflow.T0PS[1] = 1;
+		overflow.T0PS[2] = 1;
+	}
+	else if (scalemenu == 9)
+	{
+		prescaler = 256;
+		overflow.PSA = 0;
+		overflow.T0PS[0] = 1;
+		overflow.T0PS[1] = 1;
+		overflow.T0PS[2] = 1;
+	}
+
+	T = pow(2,C) * (1 / ((Fosc / 4) / prescaler));
+
+	overflow.T_Period = T;
+
+	overflow.intHex = overflow.TMR0ON * pow(2, 7) +
+		overflow.T08BIT * pow(2, 6) +
+		overflow.T0SC * pow(2, 5) +
+		overflow.T0SE * pow(2, 4) +
+		overflow.PSA * pow(2, 3) +
+		overflow.T0PS[2] * pow(2, 2) +
+		overflow.T0PS[1] * pow(2, 1) +
+		overflow.T0PS[0] * pow(2, 0);
+
+	return overflow;
+}
+
+void timer0config(int value)
+{
+	cout << "-------------------------------" << endl;
+	intToBin(value);
+	cout << endl;
+	intToHex(value);
+	cout << "-------------------------------";
+}
+
+// Quiz 6 -  A
+void degtorad(double& input)
+{
+	double pi = 3.14159265;
+
+	input = (input*pi) / 180;
+}
+
+// Quiz 6 - A
+void radtodeg(double& input)
+{
+	double pi = 3.14159265;
+
+	input = (input * 180) / pi;
+}
+
 // ------------- DECLARING CLASSES-----------------------
 
 void firstClass::firstfunction()
@@ -209,4 +421,3 @@ int firstClass::addTwo(int a, int b)
 {
 	return a + b;
 }
-
