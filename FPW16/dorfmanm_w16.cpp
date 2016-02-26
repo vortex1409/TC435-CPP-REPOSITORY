@@ -408,6 +408,33 @@ void radtodeg(double& input)
 	input = (input * 180) / pi;
 }
 
+int sizeofCString(char inputString[]){
+	//this function returns the size of the Cstring
+	int indexx = 0;
+
+	while (inputString[indexx] != '\0'){
+		indexx++;
+	}
+
+	return indexx;
+}
+
+void StringToBin(char inputString[]){
+	int sizeOfString = sizeofCString(inputString);
+	int byte[8] = { 0, 0, 0, 0, 0, 0, 0, 0 };
+	//NOTE that 1 is character 49 in ASCII, 0 is character 48 in ASCII
+
+	int WREG = 0, counter = 0;
+
+	for (int i = 0; i < (sizeOfString - 1); i++){
+		counter = inputString[i] - 48;
+		WREG += (pow(10, ((sizeOfString-2) - i)) * counter);
+	}
+	cout << WREG << endl;
+
+	//add intToBin(WREG);
+}
+
 // ------------- DECLARING CLASSES-----------------------
 
 void firstClass::firstfunction()
