@@ -205,7 +205,7 @@ timer0 timer0overflow()
 	Fosc = Internal Frequency Clock Hz
 	Prescaler = ratio to add additional variabiity
 	*/
-	
+
 	timer0 overflow;
 
 	overflow.TMR0ON = 1;
@@ -367,7 +367,7 @@ timer0 timer0overflow()
 		overflow.T0PS[2] = 1;
 	}
 
-	T = pow(2,C) * (1 / ((Fosc / 4) / prescaler));
+	T = pow(2, C) * (1 / ((Fosc / 4) / prescaler));
 
 	overflow.T_Period = T;
 
@@ -408,31 +408,35 @@ void radtodeg(double& input)
 	input = (input * 180) / pi;
 }
 
-int sizeofCString(char inputString[]){
+int sizeofCString(char inputString[]) {
 	//this function returns the size of the Cstring
 	int indexx = 0;
 
-	while (inputString[indexx] != '\0'){
+	while (inputString[indexx] != '\0') {
 		indexx++;
 	}
 
 	return indexx;
 }
 
-void StringToBin(char inputString[]){
+void StringToBin(char inputString[]) {
 	int sizeOfString = sizeofCString(inputString);
 	int byte[8] = { 0, 0, 0, 0, 0, 0, 0, 0 };
 	//NOTE that 1 is character 49 in ASCII, 0 is character 48 in ASCII
 
 	int WREG = 0, counter = 0;
 
-	for (int i = 0; i < (sizeOfString - 1); i++){
+	for (int i = 0; i < (sizeOfString - 1); i++) {
 		counter = inputString[i] - 48;
-		WREG += (pow(10, ((sizeOfString-2) - i)) * counter);
+		WREG += (pow(10, ((sizeOfString - 2) - i)) * counter);
 	}
 	cout << WREG << endl;
 
 	//add intToBin(WREG);
+	intToBin(WREG);
+	cout << endl;
+	intToHex(WREG);
+
 }
 
 // ------------- DECLARING CLASSES-----------------------
