@@ -12,13 +12,13 @@ using namespace std;
 int main() {
 	//--------- MAIN START ------------------
 	/*while (true) {
-		timer0 overflow;
+	timer0 overflow;
 
-		overflow = timer0overflow();
-		timer0config(overflow.intHex);
+	overflow = timer0overflow();
+	timer0config(overflow.intHex);
 	}*/
 
-		/*
+	/*
 	double degrees = 180;
 
 	cout << degrees << endl;
@@ -75,10 +75,10 @@ int main() {
 	cin >> B;
 
 	if (strncmp(A, B, strlen(B)) == 0)
-		cout << "Your inputs are the same" << endl;
+	cout << "Your inputs are the same" << endl;
 	else
-		cout << "Your inputs are not the same" << endl;
-	
+	cout << "Your inputs are not the same" << endl;
+
 	//-----------------------------------------------------
 	*/
 
@@ -95,9 +95,9 @@ int main() {
 	//user inputs a decimal and convert to either hex OR binary
 	//only one question can be asked, hence only one input
 	//format: valueh, valueb; for example: 255h --> FFh     or     127 --> 01111111
-	
+
 	char inputString[10];
-	do{		//fail safe
+	do {		//fail safe
 		cout << "Give me a value to convert to hex or binary" << "###h converts to hex; ###b converts to binary" << endl;
 		cin >> inputString;
 	} while (strlen(inputString) > 9);		//why 9? null character
