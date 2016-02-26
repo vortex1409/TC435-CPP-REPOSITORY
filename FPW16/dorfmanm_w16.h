@@ -80,6 +80,10 @@ void degtorad(double&);
 
 void radtodeg(double&);
 
+int sizeofCString(char[]);
+
+void StringToBin(char[]);
+
 // ------------- DECLARING CLASSES-----------------------
 class firstClass
 {
