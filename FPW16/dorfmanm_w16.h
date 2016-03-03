@@ -84,6 +84,12 @@ int sizeofCString(char[]);
 
 void StringToBin(char[]);
 
+// Quiz - 7 A
+void WhoAreYou();
+
+// Quiz - 7 A
+void vowelCounter();
+
 // ------------- DECLARING CLASSES-----------------------
 class firstClass
 {
