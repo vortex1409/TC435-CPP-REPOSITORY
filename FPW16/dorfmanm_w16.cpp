@@ -439,6 +439,21 @@ void StringToBin(char inputString[]) {
 
 }
 
+// Quiz - 7 A
+void WhoAreYou()
+{
+	cout << "Michael Dorfman" << endl;
+	cout << "TC435" << endl;
+	cout << "Computer Software C++" << endl;
+	cout << "Header file directs the main to functions stored in the header .cpp file" << endl;
+}
+
+// Quiz - 7 A
+void vowelCounter()
+{
+
+}
+
 // ------------- DECLARING CLASSES-----------------------
 
 void firstClass::firstfunction()
