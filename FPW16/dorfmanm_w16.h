@@ -3,6 +3,8 @@
 #define DORFMAN_W16_H
 #include <iostream>
 #include <cmath> // Added to remove 'ambiguous'
+#include <cstring>
+#include <fstream>
 /*
 Name: Michael Dorfman
 Course: TC435
@@ -20,12 +22,12 @@ struct transistor
 	char npnorpnp;
 };
 
-struct PLC
-{
-	double SP, PV;
-	double ProportionalG, DifferentialG, IntegralG;
-	double Alarm_1, Alarm_2;
-};
+//struct PLC
+//{
+//	double SP, PV;
+//	double ProportionalG, DifferentialG, IntegralG;
+//	double Alarm_1, Alarm_2;
+//};
 
 struct timer0
 {
@@ -43,12 +45,23 @@ struct timer0
 // Quiz 6 - A
 struct filter_RC
 {
-	double capacitance_LP;
-	double capacitance_LC;
+	double capacitance;
+	double cap_LP, cap_HP;
 	double resistance_LP;
 	double resistance_HP;
 	double frequency;
-	double period;
+	double Fl, Fr, Fh;
+	double Frequency;
+	double Impedance;
+	double Amplitude;
+};
+
+struct PLC
+{
+	double SP, PV;
+	double ProportionalG, DifferentialG, IntegralG;
+	double System_T, System_G;
+	double CharacteristicEffects[2];
 };
 //--------------- DECLARING FUNCTIONS ----------------------
 
@@ -89,6 +102,28 @@ void WhoAreYou();
 
 // Quiz - 7 A
 void vowelCounter();
+
+void plot(int, int, int);
+
+double pie();
+
+double exponent(double);
+
+void Equation_1(double& input);
+
+double capacitance(double, double);
+
+double inductance(double, double);
+
+double Equation_2();
+
+void Equation_3(double&);
+
+void Equation_4(double&);
+
+void Equation_5(double&);
+
+double Impedance(double, double, double);
 
 // ------------- DECLARING CLASSES-----------------------
 class firstClass
