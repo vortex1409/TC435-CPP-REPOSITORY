@@ -1,5 +1,7 @@
 #include <iostream>
 #include <cmath> // Added to remove 'ambiguous'
+#include <cstring>
+#include <fstream>
 #include "dorfmanm_w16.h"
 using namespace std;
 
@@ -451,8 +453,138 @@ void WhoAreYou()
 // Quiz - 7 A
 void vowelCounter()
 {
+	char inputString[100];
+	double working_r = 0;
+	do
+	{
+		system("cls");
+		cout << "Input: ";
+		cin >> inputString;
+	} while (strlen(inputString) > 99);
+
+	for (int i = 0; i < strlen(inputString); i++)
+	{
+		if (inputString[i] == 'a' || inputString[i] == 'A')
+		{
+			working_r++;
+		}
+		if (inputString[i] == 'e' || inputString[i] == 'E')
+		{
+			working_r++;
+		}
+		if (inputString[i] == 'i' || inputString[i] == 'I')
+		{
+			working_r++;
+		}
+		if (inputString[i] == 'o' || inputString[i] == 'O')
+		{
+			working_r++;
+		}
+		if (inputString[i] == 'u' || inputString[i] == 'U')
+		{
+			working_r++;
+		}
+	}
+
+	cout << "Vowels counted: " << working_r << endl;
+}
+
+void plot(int min, int max, int step)
+{
+	ofstream plotFile("database.txt");
+	int working_r = 1;
+
+	if (plotFile.is_open())
+	{
+		for (int i = min; i < max; i += step)
+		{
+			plotFile << working_r << " " << i << endl;
+			working_r++;
+		}
+
+		plotFile.close();
+
+	}
+}
+
+double pie()
+{
+	double pi = 3.14159265;
+	return pi;
+}
+
+double exponent(double input)
+{
+	double e = 2.718281828;
+}
+
+void Equation_1(double& input)
+{
+	PLC equ;
+	double e = 2.718281828;
+
+	if (equ.System_T == 1)
+	{
+		equ.CharacteristicEffects[0] = 0;
+	}
+	else
+	{
+		equ.CharacteristicEffects[0] = pow(e, (1 / equ.System_T));
+	}
 
 }
+
+double capacitance(double f, double c)
+{
+	double Xc;
+
+	Xc = 1 / (2 * pie() * f * c);
+	return Xc;
+}
+
+double inductance(double f, double L)
+{
+	double XL;
+
+	XL = 2 * pie() * f * L;
+	return XL;
+}
+
+void Equation_2()
+{
+	PLC equ2;
+	equ2.CharacteristicEffects[1] = equ2.System_G*(1 + equ2.CharacteristicEffects[0]);
+}
+
+void Equation_3(double&)
+{
+	filter_RC equ3;
+
+	equ3.Fr = 1 / (2 * pie()*equ3.resistance_HP*equ3.cap_HP);
+}
+
+void Equation_4(double&)
+{
+	filter_RC equ4;
+	equ4.Fl = 1 / (2 * pie()*equ4.resistance_LP*equ4.cap_LP);
+}
+
+void Equation_5(double&)
+{
+	filter_RC equ5;
+
+	equ5.Fr = sqrt(equ5.Fh * equ5.Fl);
+}
+
+double Impedance(double x1, double x2, double x3)
+{
+	double Z;
+
+	Z = sqrt(pow(x1, 2) + pow((x2 - x3), 2));
+	return Z;
+}
+
+
 
 // ------------- DECLARING CLASSES-----------------------
 
