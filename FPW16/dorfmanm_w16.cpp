@@ -515,12 +515,11 @@ double pie()
 
 double exponent(double input)
 {
-	double e = 2.718281828;
+	return pow(2.718281828, input);
 }
 
-void Equation_1(double& input)
+void Equation_1(PLC& equ)
 {
-	PLC equ;
 	double e = 2.718281828;
 
 	if (equ.System_T == 1)
@@ -550,29 +549,23 @@ double inductance(double f, double L)
 	return XL;
 }
 
-void Equation_2()
+void Equation_2(PLC& equ2)
 {
-	PLC equ2;
 	equ2.CharacteristicEffects[1] = equ2.System_G*(1 + equ2.CharacteristicEffects[0]);
 }
 
-void Equation_3(double&)
+void Equation_3(filter_RC& equ3)
 {
-	filter_RC equ3;
-
 	equ3.Fr = 1 / (2 * pie()*equ3.resistance_HP*equ3.cap_HP);
 }
 
-void Equation_4(double&)
+void Equation_4(filter_RC& equ4)
 {
-	filter_RC equ4;
 	equ4.Fl = 1 / (2 * pie()*equ4.resistance_LP*equ4.cap_LP);
 }
 
-void Equation_5(double&)
+void Equation_5(filter_RC& equ5)
 {
-	filter_RC equ5;
-
 	equ5.Fr = sqrt(equ5.Fh * equ5.Fl);
 }
 
