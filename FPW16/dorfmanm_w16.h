@@ -109,21 +109,21 @@ double pie();
 
 double exponent(double);
 
-void Equation_1(double& input);
+void Equation_1(PLC&);
 
 double capacitance(double, double);
 
 double inductance(double, double);
 
-double Equation_2();
+void Equation_2(PLC&);
 
-void Equation_3(double&);
+void Equation_3(filter_RC&);
 
-void Equation_4(double&);
+void Equation_4(filter_RC&);
 
-void Equation_5(double&);
+void Equation_5(filter_RC&);
 
-double Impedance(double, double, double);
+double impedance(double, double, double);
 
 // ------------- DECLARING CLASSES-----------------------
 class firstClass
