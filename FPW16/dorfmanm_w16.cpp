@@ -489,23 +489,25 @@ void vowelCounter()
 	cout << "Vowels counted: " << working_r << endl;
 }
 
-void plot(int min, int max, int step)
-{
-	ofstream plotFile("database.txt");
-	int working_r = 1;
+//Moved to Bottom (Redundancy)
 
-	if (plotFile.is_open())
-	{
-		for (int i = min; i < max; i += step)
-		{
-			plotFile << working_r << " " << i << endl;
-			working_r++;
-		}
-
-		plotFile.close();
-
-	}
-}
+//void plot(int min, int max, int step)
+//{
+//	ofstream plotFile("database.txt");
+//	int working_r = 1;
+//
+//	if (plotFile.is_open())
+//	{
+//		for (int i = min; i < max; i += step)
+//		{
+//			plotFile << working_r << " " << i << endl;
+//			working_r++;
+//		}
+//
+//		plotFile.close();
+//
+//	}
+//}
 
 double pie()
 {
@@ -556,12 +558,12 @@ void Equation_2(PLC& equ2)
 
 void Equation_3(filter_RC& equ3)
 {
-	equ3.Fr = 1 / (2 * pie()*equ3.resistance_HP*equ3.cap_HP);
+	equ3.Fr = 1 / (2 * pie()*equ3.Resistance_HP*equ3.cap_HP);
 }
 
-void Equation_4(filter_RC& equ4)
+void Equation_4(filter_RC &equ4)
 {
-	equ4.Fl = 1 / (2 * pie()*equ4.resistance_LP*equ4.cap_LP);
+	equ4.Fl = 1 / (2 * pie()*equ4.Resistance_LP*equ4.cap_LP);
 }
 
 void Equation_5(filter_RC& equ5)
@@ -577,7 +579,151 @@ double Impedance(double x1, double x2, double x3)
 	return Z;
 }
 
+// TEST 2
 
+void initializeFilter(filter_RC& filter_var)
+{
+	/*system("cls");
+	cout << "Cap HP Val: (nF): ";
+	cin >> filter_var.cap_HP;
+	cout << "Cap LP Val: (nF): ";
+	cin >> filter_var.cap_LP;
+	cout << "Resistor HP Val: (kOhms): ";
+	cin >> filter_var.Resistance_HP;
+	cout << "Resistor LP Val: (kOhms): ";
+	cin >> filter_var.Resistance_HP;*/
+	
+	filter_var.cap_HP = 15;
+	filter_var.cap_LP = 0.56;
+	filter_var.Resistance_HP = filter_var.Resistance_LP = 10;
+
+	power_correction(filter_var);
+
+	resonantFrequency(filter_var);
+
+}
+
+void power_correction(filter_RC& input)
+{
+	input.cap_HP = input.cap_HP*pow(10, -9);
+	input.cap_LP = input.cap_LP*pow(10, -9);
+	input.Resistance_HP = input.Resistance_HP * pow(10, 3);
+	input.Resistance_LP = input.Resistance_LP * pow(10, 3);
+
+}
+
+void resonantFrequency(filter_RC& RF)
+{
+	hi_cutOff_Frequency(RF);
+	lo_cutOff_Frequency(RF);
+	RF.Fr = sqrt(RF.Fh * RF.Fl);
+}
+
+void hi_cutOff_Frequency(filter_RC& hcutoff)
+{
+	hcutoff.Fh = 1 / (2 * pie()* hcutoff.Resistance_HP * hcutoff.cap_HP);
+}
+
+void lo_cutOff_Frequency(filter_RC& lcutoff)
+{
+	lcutoff.Fl = 1 / (2 * pie()*lcutoff.Resistance_LP * lcutoff.cap_LP);
+}
+
+void bandPassFilter(filter_RC& var)
+{
+	if (var.Frequency <= var.Fr)
+	{
+		/*highPassFilter(var);*/
+		lowPassFilter(var);
+	}
+	else
+	{
+		/*lowPassFilter(var);*/
+		highPassFilter(var);
+	}
+
+}	
+
+void effectiveImpedance(filter_RC& var)
+{
+	if (var.Frequency <= var.Fr)
+	{
+		var.Capacitance = capacitance(var.Frequency,var.cap_HP);
+		var.Impedance = Impedance(var.Resistance_HP, 0, var.Capacitance);
+	}
+	else
+	{
+		var.Capacitance = capacitance(var.Frequency, var.cap_LP);
+        var.Impedance = Impedance(var.Resistance_LP, 0, var.Capacitance);
+	}
+	
+}
+
+void highPassFilter(filter_RC& var) 
+{
+	effectiveImpedance(var);
+	
+	var.Amplitude = var.Resistance_HP / var.Impedance;
+}
+
+void lowPassFilter(filter_RC& var)
+{
+	effectiveImpedance(var);
+
+	var.Amplitude = var.Capacitance / var.Impedance;
+}
+
+void functionToPlot(plotter& plot, filter_RC& filter)
+{
+	filter.Frequency = plot._X;
+	bandPassFilter(filter);
+	plot._Y = filter.Amplitude;
+}
+
+void plotFilter(plotter& plot, filter_RC& filter)
+{
+	ofstream myfile("test2.txt");
+	double vfile = 1;
+
+	strncpy_s(plot.X_axisLabel, "Frequency(Hz)",15);
+	strcpy_s(plot.Y_axisLabel, "Voltage(Vpp)");
+
+	
+
+
+	if (myfile.is_open())
+	{
+		myfile << plot.X_axisLabel << " " << plot.Y_axisLabel << endl;
+		for (int i = plot.axis_MIN; i < plot.axis_MAX; i += plot._step)
+		{
+			plot._X = i;
+			functionToPlot(plot, filter);
+			myfile << i << " " << plot._Y << endl;
+		} 
+
+		myfile.close();
+
+	}
+
+}
+
+void plot(int min, int max, int step)
+{
+	ofstream plotFile("database.txt");
+	int working_r = 1;
+
+	if (plotFile.is_open())
+	{
+		for (int i = min; i < max; i += step)
+		{
+			plotFile << working_r << " " << i << endl;
+			working_r++;
+		}
+
+		plotFile.close();
+
+	}
+}
 
 // ------------- DECLARING CLASSES-----------------------
 
