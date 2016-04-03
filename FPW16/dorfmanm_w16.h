@@ -45,15 +45,26 @@ struct timer0
 // Quiz 6 - A
 struct filter_RC
 {
-	double capacitance;
-	double cap_LP, cap_HP;
-	double resistance_LP;
-	double resistance_HP;
-	double frequency;
-	double Fl, Fr, Fh;
+	// Old Struct Data (Redundancy)
+	//double capacitance;
+	//double cap_LP, cap_HP;
+	//double resistance_LP;
+	//double resistance_HP;
+	//double frequency;
+	//double Fl, Fr, Fh;
+	//double Frequency;
+	//double Impedance;
+	//double Amplitude;
+
+	// Test 2
+	double Capacitance;
+	double Resistance_LP;
+	double Resistance_HP;
 	double Frequency;
 	double Impedance;
 	double Amplitude;
+	double cap_LP, cap_HP;
+	double Fl, Fr, Fh;
 };
 
 struct PLC
@@ -62,6 +73,13 @@ struct PLC
 	double ProportionalG, DifferentialG, IntegralG;
 	double System_T, System_G;
 	double CharacteristicEffects[2];
+};
+
+struct plotter
+{
+	char Y_axisLabel[15], X_axisLabel[15];
+	int axis_MIN, axis_MAX;
+	double _X, _Y, _step;
 };
 //--------------- DECLARING FUNCTIONS ----------------------
 
@@ -124,6 +142,30 @@ void Equation_4(filter_RC&);
 void Equation_5(filter_RC&);
 
 double impedance(double, double, double);
+
+// TEST 2 FUNCTIONS
+
+void functionToPlot(plotter&, filter_RC&);
+
+void plotFilter(plotter&, filter_RC&);
+
+void initializeFilter(filter_RC&);
+
+void resonantFrequency(filter_RC&);
+
+void bandPassFilter(filter_RC&);
+
+void effectiveImpedance(filter_RC&);
+
+void highPassFilter(filter_RC&);
+
+void lowPassFilter(filter_RC&);
+
+void hi_cutOff_Frequency(filter_RC&);
+
+void lo_cutOff_Frequency(filter_RC&);
+
+void power_correction(filter_RC&);
 
 // ------------- DECLARING CLASSES-----------------------
 class firstClass
