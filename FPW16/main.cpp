@@ -8,7 +8,20 @@ using namespace std;
 int main() {
 	//--------- MAIN START ------------------
 
-	plot(0, 100, 1);
+	plotter bandPass;
+	filter_RC filterToTest;
+
+	initializeFilter(filterToTest);
+
+	bandPass.axis_MIN = 1;
+	bandPass.axis_MAX = 500000;
+	bandPass._step = 10;
+
+	plotFilter(bandPass, filterToTest);
+
+	cout << filterToTest.Fr << endl;
+	cout << filterToTest.Fh << endl;
+	cout << filterToTest.Fl << endl;
 
 	// -------- MAIN END --------------------
 	cout << endl;
