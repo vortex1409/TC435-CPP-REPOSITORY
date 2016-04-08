@@ -738,6 +738,126 @@ int firstClass::addTwo(int a, int b)
 {
 	return a + b;
 }
-//TC435
-// 2015 (C) MICHAEL DORFMAN | VORTEX1409 | base64(TUlDSEFFTCBET1JGTUFOIHwgVk9SVEVYMTQwOQ==)
-//MTQwOQ==
+
+//Almost an object - uController
+void uController::initializeController() {
+	initialized = true;	//Condition to avoid memory errors and problems addressing pointers.
+	for (int i = 0; i < sizeof(controllerMemory) / sizeof(controllerMemory[0]); i++)
+		controllerMemory[i] = 0;
+	working_r = &controllerMemory[0];	//the pointer working_r of the object is "pointing at (looking at)" the memory address of the first element of this array
+	for (int i = 0; i < sizeof(equivalentByte) / sizeof(equivalentByte[0]); i++)
+		equivalentByte[i] = 0;
+}
+
+
+
+void uController::print(char input[]) {//dont forget to include a space after
+	if (initialized == true) {//first if
+		if (input[0] == 'w') {//second if		with lower case, I call the integer value of the working R. IT value it is pointing at.
+			cout << *working_r;	//printing the content of the memory address, the pointer is looking at.
+		}//second if
+		else if (input[0] == 'W') {//first else-if  with upper case, I call the same value, decoded in bits. In reality, I print an array with specific conditions.
+			for (int i = 0; i < 16; i++)
+				cout << equivalentByte[i] << " ";
+			cout << endl;
+		}//first else-if
+		else
+			cout << "  ** no variable under that category **" << endl;
+	}//first if
+	else
+		cout << endl << "  **controller not initialized**" << endl;
+}//function closes
+
+
+
+
+void uController::MOVLW(char input[]) {
+	if (initialized == true) {		//fail safe
+									//me (the programmer) know that the pointer working_R is "looking at"
+									//the index memeber 0 of the array controllerMemory. So, I save the
+									// literal (the value,the integer) to such index of the array.
+		controllerMemory[0] = charToInt(input);
+
+		//now that I have the literal, I convert the operation to a binary
+		//sequence.
+		convertToByte("movlw");
+	}
+	else
+		cout << endl << "  **controller not initialized**" << endl;
+}
+
+
+
+
+
+void uController::stopController() {
+	//this function is for good practice. Clears all data.
+	initialized = false;
+	for (int i = 0; i < sizeof(controllerMemory) / sizeof(controllerMemory[0]); i++)
+		controllerMemory[i] = 0;
+	working_r = &controllerMemory[0];
+	for (int i = 0; i < sizeof(equivalentByte) / sizeof(equivalentByte[0]); i++)
+		equivalentByte[i] = 0;
+}
+
+int uController::sizeOfChar(char input[]) {
+	//this function calculates the size of the input cstring
+	int WREG = 0;
+	while (input[WREG] != '\0')
+		WREG++;
+	return WREG;
+}
+
+int uController::charToInt(char input[]) {
+	//Converting a input cstring into an integer
+	int WREG = 0;
+	int sizeOfInputString = sizeOfChar(input);
+	int holder = 0;
+
+	for (int i = 0; i < sizeOfInputString; i++) {
+		holder = static_cast<int>(input[i]) - 48;   //using the ASCII table to convert to integer. Risky.
+		if (holder < 0 || holder > 9)
+			WREG += 0;
+		else
+			WREG += static_cast<int>(holder * pow(10, (sizeOfInputString - 1) - i));
+	}
+	return WREG;
+}
+
+void uController::convertToByte(char input[]) {
+	//stores the simulated bit sequence into the proper array.
+	if (input == "movlw") {
+		//Will print the byte represented by the movlw function and the input byte from the user.
+		intToBinC(*working_r, equivalentByte);	//stores the byte in the working r, first
+
+		for (int i = 0; i < 4; i++) //fills everything according to the documentation
+			equivalentByte[i] = 0;
+
+		for (int i = 4; i < 8; i++)
+			equivalentByte[i] = 1;
+	}
+	else
+		cout << " **byte conversion not possible**" << endl;
+}
+
+void uController::intToBinC(int inputConversion, int arrayToStore[]) {
+	//limited to 0 to 255
+	//building the simulated binary sequence relative to the inputConversion integer.
+	int powerOfinput = 7/*definePower(2, inputConversion)*/;
+	int holder = inputConversion;
+	int sizeOfArray = 16;	//limited to be used with the equivalentByte array
+
+	if (holder < 0 || holder > 255)	//fail safe to limit the input between 0 to 255
+		cout << endl << "  **  ERROR: out of range  **  " << endl;
+	else
+	{	//Will print the number of bits required for the specific number (no more than the size of my input), instead of a whole string of 8
+		for (int i = ((sizeOfArray - 1) - powerOfinput); i < sizeOfArray; i++) {
+			if (holder >= pow(2, (sizeOfArray - 1) - i)) {
+				arrayToStore[i] = 1;	//starts recording at the maximum bit needed
+				holder -= static_cast<int>(pow(2, (sizeOfArray - 1) - i));	//not the best approach, but works
+			}
+			else
+				arrayToStore[i] = 0;
+		}
+	}
+}
