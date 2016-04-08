@@ -81,6 +81,7 @@ struct plotter
 	int axis_MIN, axis_MAX;
 	double _X, _Y, _step;
 };
+
 //--------------- DECLARING FUNCTIONS ----------------------
 
 void firstTest(int);
@@ -183,7 +184,24 @@ private: // Info
 	int num2 = 2;
 };
 
+class uController		//object (almost)
+{
+public:
+	void initializeController();	//the controller sim. must be initialized before being used
+	void print(char[]);				//function of simulated object
+	void MOVLW(char[]);				//function of simulated object
+	void stopController();			//good practice.
+private:
+	//internal variables
+	int * working_r;				//the working R of the whole simulator - integer pointer
+	bool initialized;				//a true or false condition.
+	int controllerMemory[10];		//0 - WREG, 1 - d, 2 - a
+	int equivalentByte[16];			//Represents the "memory size of the controller.
+									//internal functions
+	void convertToByte(char[]);		//will convert a character string into equivalent bits
+	int charToInt(char[]);			//conversion cstring to integers
+	int sizeOfChar(char[]);			//find the size of the cstring
+	void intToBinC(int, int[]);		//integer to a cstring (array)
+};
+
 #endif
-//TC435
-// 2015 (C) MICHAEL DORFMAN | VORTEX1409 | base64(TUlDSEFFTCBET1JGTUFOIHwgVk9SVEVYMTQwOQ==)
-//MTQwOQ==
