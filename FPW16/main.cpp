@@ -8,21 +8,24 @@ using namespace std;
 int main() {
 	//--------- MAIN START ------------------
 
-	//plotter bandPass;
-	//filter_RC filterToTest;
+	/* Test 1 Demonstration
+	plotter bandPass;
+	filter_RC filterToTest;
 
-	//initializeFilter(filterToTest);
+	initializeFilter(filterToTest);
 
-	//bandPass.axis_MIN = 1;
-	//bandPass.axis_MAX = 500000;
-	//bandPass._step = 10;
+	bandPass.axis_MIN = 1;
+	bandPass.axis_MAX = 500000;
+	bandPass._step = 10;
 
-	//plotFilter(bandPass, filterToTest);
+	plotFilter(bandPass, filterToTest);
 
-	//cout << filterToTest.Fr << endl;
-	//cout << filterToTest.Fh << endl;
-	//cout << filterToTest.Fl << endl;
+	cout << filterToTest.Fr << endl;
+	cout << filterToTest.Fh << endl;
+	cout << filterToTest.Fl << endl;
+	*/
 
+	/* uController Demonstration
 	uController tester;
 
 	tester.print("w");
@@ -49,6 +52,9 @@ int main() {
 
 	tester.print("w");
 	cout << endl;
+	*/
+
+
 
 	// -------- MAIN END --------------------
 	cout << endl;
